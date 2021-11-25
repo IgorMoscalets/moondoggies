@@ -29,7 +29,7 @@ function getPlugins(env) {
         })
     ]
 }
-
+    
 //separate function to get the config so we can call it from environment based config files.
 export function getBaseWebPackConfig(env, argv) {
     let config = {};
@@ -70,7 +70,7 @@ export function getBaseWebPackConfig(env, argv) {
         ]
     }
 
-
+    config.experiments = { topLevelAwait: true };
     //rules tell webpack what to do on specific tests, so 
     //we need to tell webpack what to do when it's processing a type script file
     //or a scss file or an image, etc etc etc.
@@ -87,7 +87,9 @@ export function getBaseWebPackConfig(env, argv) {
                                 '@babel/preset-env', //use presets for env, react, and typescript
                                 '@babel/preset-react',
                                 '@babel/preset-typescript'
-                            ]
+                            ],
+                            plugins: [
+                            '@babel/plugin-syntax-top-level-await']
                         }
                     },
                     {

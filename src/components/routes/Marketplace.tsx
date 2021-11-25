@@ -1,40 +1,17 @@
 import React from "react";
-import { Web3Storage, getFilesFromPath } from 'web3.storage'
 
+	import { NFTStorage, File } from 'nft.storage'
 
-function getAccessToken() {
-  // If you're just testing, you can paste in a token
-  // and uncomment the following line:
-   return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweGUyYTQ2NDVmMTExMWMxNGUwMjRhODVmOTc0M0Q2MDViZkZBM2I2OEMiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2Mzc2NjM5MjEzMzgsIm5hbWUiOiJNb29uZG9nZ2llcyJ9.SNHrRj96IT_zhRp0nL66cfZdNGb9Aiy-lukwMniGVUQ'
+const apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDQ0MTU0RkE4MDRkNWU2QUQ3YTNDNWMwYTY2OTY2NzIyYzRDQjk4NTAiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTYzNzc3MzQxMjI2MSwibmFtZSI6Ik1vb25Eb2dnaWVzIn0.XpBe6o3mVd2AVvvgbgSJ08HqUtUhf0GAURndDgTuxzA'
+const client = new NFTStorage({ token: apiKey })
 
-  // In a real app, it's better to read an access token from an 
-  // environement variable or other configuration that's kept outside of 
-  // your code base. For this to work, you need to set the
-  // WEB3STORAGE_TOKEN environment variable before you run your code.
-  //return process.env.WEB3STORAGE_TOKEN
-}
-
-function makeStorageClient() {
-  return new Web3Storage({ token: getAccessToken() });
-}
-
-async function getFiles(path) {
-  const files = await getFilesFromPath(path)
-  console.log(`read ${files.length} file(s) from ${path}`);
-  return files
-}
-
-async function storeFiles(files) {
-  const client = makeStorageClient()
-  const cid = await client.put(files)
-  console.log('stored files with cid:', cid)
-  return cid
-}
-
-
+const metadata = await client.store({
+	name: 'Pinpie',
+	description: 'Pin is not delicious beef!',
+	image: new File([{"done": "124214"}], 'pinpie.jpg', { type: 'image/jpg' })
+})
+console.log(metadata.url)
 export const Marketplace = () : React.ReactElement => {
-	const gotFiles = getFiles("../database");
-	storeFiles(gotFiles);
 
 	/*const doggiesForSale = [];
 	const listItems = doggiesForSale.map((d) => <div className="col-lg-4">	
