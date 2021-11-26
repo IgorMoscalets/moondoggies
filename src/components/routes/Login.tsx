@@ -1,50 +1,70 @@
-import React from "react";
+import React, { useState } from "react";
+
+import { useMoralis } from "react-moralis";
 
 export const Login = () : React.ReactElement => {
+
+	const { logout, isAuthenticating, isAuthenticated, Moralis } = useMoralis();
+	const [username, setUsername] = useState("");
+	const [password, setPassword] = useState("");
+	const [email, setEmail] = useState("");
+	const [currentEmail, setCurrentEmail] = useState("");
+	const [currentUsername, setCurrentUsername] = useState("");
+	const [currentWalletAddr, setCurrentWalletAddr] = useState("");
+	const [currentEmailVerified, setCurrentEmailVerified] = useState("");
+
+
+
+	const handleEmailChange = (event) => setEmail(event.target.value);
+	const handlePasswordChange = (event) => setPassword(event.target.value);
+	const handleUsernameChange = (event) => setUsername(event.target.value);
+
+	const loginUsingMetamask = async () => {
+		Moralis.authenticate().then(function(user){
+			user.set("username", username);
+			user.set("password", password);
+			user.set("email", email);
+		});
+	};
+
+	const getCurrentUserInfo = async () => {
+		Moralis.User.currentAsync().then(function(user){
+		console.log(user);
+		setCurrentEmail(user.get("email"));
+		setCurrentUsername(user.get("username"));
+		setCurrentWalletAddr(user.get("ethAddress"));
+		setCurrentEmailVerified(user.get("emailVerified"));
+		console.log("XDDD");
+	});
+	};
+
+
+	
+
+if (!isAuthenticated){
 	return (
-	<div className="login">
-		<div className="container">
-		<div className="row justify-content-md-center">
-				<div className="col-4"><button className="btn btn-primary login-connect" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-		Login with Email
-	</button>
-	<div className="collapse" id="collapseExample">
-		<div className="card card-body">
-			<form>
-			<div className="form-group">
-				<label htmlFor="exampleInputEmail1">Email address</label>
-				<input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-				<small id="emailHelp" className="form-text text-muted">Well never share your email with anyone else.</small>
-			</div>
-			<div className="form-group">
-				<label htmlFor="exampleInputPassword1">Password</label>
-				<input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-			</div>
-			<div className="form-check">
-				<input type="checkbox" className="form-check-input" id="exampleCheck1" />
-				<label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
-			</div>
-			<button type="submit" className="btn btn-primary">Submit</button>
-			</form>
-			</div>
-		</div></div>
-
-		<div className="row justify-content-md-center">
-			<div className="col-4"><button className="login-connect enableEthereumButton"><img src="metamask.svg" width="50" />Connect with Custom RPC</button>
-			<h4>Accounts: <span className="showAccount"></span></h4></div>
-		</div>
-		<div className="row justify-content-md-center">
-			<div className="col-4"><button className="login-connect enableCustomRpcButton">Get Our Contract Name</button>
-			<h4>Contract Name: <span className="showAccount"></span></h4>
-			<h4>Total Supply: <span className="showAccount"></span></h4>
-			<h4>Owner Name: <span className="showAccount"></span></h4>
-			</div>
-		</div>
-
-
-		</div>
+	<div>
+		<input value={email} onChange={handleEmailChange} placeholder="email" />
+		<input value={password} onChange={handlePasswordChange} placeholder="password" />
+		<input value={username} onChange={handleUsernameChange} placeholder="username" />
+		<button onClick={loginUsingMetamask}>Sign up (with Metamask)</button>
 	</div>
+	);
+}
+	
+	
+	return (
+	<div>
+		<h1>Welcome</h1>
+		Email: {currentEmail} <br/>
+		Username: {currentUsername} <br/>
+		EthWallet: {currentWalletAddr} <br/>
+			Email Verified: {currentEmailVerified} <br/>
 
+		<button onClick={getCurrentUserInfo}>My Info</button>
+		<button onClick={() => logout()} disabled={isAuthenticating}>
+		Logout
+		</button>
 	</div>
 	);
 }

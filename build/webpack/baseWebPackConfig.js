@@ -5,6 +5,7 @@ import tsConfigPathPlugin from 'tsconfig-paths-webpack-plugin'; //docs -> https:
 import TerserPlugin from 'terser-webpack-plugin'; //docs -> https://github.com/webpack-contrib/terser-webpack-plugin
 import sass from 'sass'; //docs -> https://sass-lang.com/install
 import ESLintPlugin from 'eslint-webpack-plugin';
+const webpack = require('webpack')
 
 
 //separate so we can call it differently pending on build environment
@@ -22,6 +23,12 @@ function getPlugins(env) {
     })
 
     return [
+    new webpack.ProvidePlugin({
+      process: 'process',
+    }),
+    new webpack.ProvidePlugin({
+            Buffer: ['buffer', 'Buffer'],
+        }),
         htmlWebPackPlugin,
         new ESLintPlugin({
             context: paths.root,
@@ -67,7 +74,14 @@ export function getBaseWebPackConfig(env, argv) {
         extensions: [".scss", ".js", ".jsx", ".tsx", ".ts"],
         plugins: [
             new tsConfigPathPlugin() //this is the third final piece to using tsConfig as a source of truth for path aliases, it tells webpack to use it to resolve aliases in our actual code during compilation.
-        ]
+        ],
+        fallback: {
+        	"crypto": require.resolve("crypto-browserify"),
+        	"stream": require.resolve("stream-browserify"),
+        	"http": require.resolve("stream-http"),
+        	"https": require.resolve("https-browserify"),
+        	"os": require.resolve("os-browserify/browser")
+        }
     }
 
     config.experiments = { topLevelAwait: true };
