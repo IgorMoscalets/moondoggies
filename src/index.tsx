@@ -6,8 +6,8 @@ import "style.css"
 
 
 
-const APP_ID = "GEopAiMvn4j5xV1HUngZTgUynHjb4c0FPSYD27kJ";
-const SERVER_URL = "https://blz71dbm4sc7.usemoralis.com:2053/server";
+const APP_ID = "re36JMZQ8rWzCIO4mbBpqlVP1RbKGF52Rjx2Z5oI" //MAINNET "GEopAiMvn4j5xV1HUngZTgUynHjb4c0FPSYD27kJ";
+const SERVER_URL =  "https://damp8oy0lyqo.usemoralis.com:2053/server"// MAINNET "https://blz71dbm4sc7.usemoralis.com:2053/server";
 
 
 function index() {
