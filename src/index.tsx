@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { App } from './components/App';
 import { MoralisProvider } from "react-moralis";
 import "style.css"
-
+import "font-awesome/css/font-awesome.min.css"
 
 
 const APP_ID = "re36JMZQ8rWzCIO4mbBpqlVP1RbKGF52Rjx2Z5oI" //MAINNET "GEopAiMvn4j5xV1HUngZTgUynHjb4c0FPSYD27kJ";

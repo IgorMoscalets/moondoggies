@@ -7,3 +7,4 @@ export { Marketplace } from "./Marketplace";
 export { Accessories } from "./Accessories";
 export { Doggies } from "./Doggies";
 export { Sidebar } from "./Sidebar";
+export { Footer } from "./Footer";

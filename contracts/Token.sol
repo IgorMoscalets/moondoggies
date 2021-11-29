@@ -10,7 +10,8 @@ contract Token is ERC721, Ownable{
 		uint8 adorable;
 		uint8 health;
 		uint8 stamina;
-
+		uint8 stun;
+		string tokenURI;
 	}
 
 	uint256 nextId = 0;
@@ -43,9 +44,16 @@ contract Token is ERC721, Ownable{
 	function getTokenDetails(uint256 tokenId) public view returns (MoonDog memory){
 		return _tokenDetails[tokenId];
 	}
-	function mint(uint8 attack, uint8 adorable, uint8 health, uint8 stamina) public onlyOwner{
-		_safeMint(msg.sender, nextId);
-		_tokenDetails[nextId] = MoonDog(attack, adorable, health, stamina);
+
+
+	function mintExternal(uint8 attack, uint8 adorable, uint8 health, uint8 stamina, uint8 stun, string memory tokenURI, uint256 price) public virtual payable {
+		require(
+			msg.value >= price,
+			"Ether sent with this transaction is not correct"
+		);
+
+		_mint(msg.sender, nextId);
+		_tokenDetails[nextId] = MoonDog(attack, adorable, health, stamina, stun, tokenURI);
 		nextId++;
 	}
 

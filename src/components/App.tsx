@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Accessories, Marketplace, Home, Login, Breeding, Battle, Doggies, Navigation, Sidebar} from "./routes";
+import { Accessories, Marketplace, Home, Login, Breeding, Battle, Doggies, Navigation, Sidebar, Footer} from "./routes";
 
 export const App = (): React.ReactElement => {
 
@@ -13,6 +13,7 @@ export const App = (): React.ReactElement => {
       <div className="container-fluid">
     <div className="row flex-nowrap">
     <Sidebar />
+      <div className="sizingwsidebar">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/marketplace" element={<Marketplace />} />
@@ -24,6 +25,8 @@ export const App = (): React.ReactElement => {
         </Routes>
       </div>
       </div>
+      </div>
+    <Footer />
       </div>
       </BrowserRouter>
       );
