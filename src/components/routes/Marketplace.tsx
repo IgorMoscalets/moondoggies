@@ -41,7 +41,7 @@ const showMyNFTs = async () => {
 
 		const nftImageURI = "https://dweb.link/ipfs/"+jsonResponse.image.substring(5);
 
-		const element = (<div key={jsonResponse.name}>
+		const element = (<div className="overflow-card" key={jsonResponse.name}>
 		<div className="card doggie-card">
 		<img src={nftImageURI}></img>
 		<div className="doggiename">{jsonResponse.name}</div> <br/>
