@@ -28,7 +28,7 @@ This adorable parameter which is one of the most interesting and magical things 
 Here comes the Chainlink VRF (Verifiable Random Function), where we can get all our random stuff right inside our contracts with cryptological proof and security, which gives our game needed fairness and safety to choose players to win, even though we include such parameter as randomness in our game world. It just makes it more interesting but in no case easier to hack or more imbalanced. 
 
 
-![alt text](https://github.com/IgorMoscalets/MoonDoggies/blob/main/src/moondoggies-screenshots/moondogbattle.png?raw=true)
+![alt text](https://github.com/IgorMoscalets/MoonDoggies/blob/main/src/moondogbattle.png?raw=true)
 
 Also we have our Marketplace, where users can sell and buy their NFTs (now they choose the price of them), they try them in game and then they know and decide, which NFTs are more rare, which are more valuable in terms of gameplay and so on. In this Marketplace we also want to use Chainlink Price Feeds, where we can get our fiat value for prices and user balance, to get more accurate and safe understanding of assets prices for user.
 ![alt text](https://github.com/IgorMoscalets/MoonDoggies/blob/main/src/moondoggies-screenshots/moondoggies-2-marketplace.png?raw=true)
