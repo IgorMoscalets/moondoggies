@@ -10,6 +10,9 @@ You can <code>git clone</code> this project and then run <br>
 
 ## Inspiration
 I've always been a big fan of crypto world! I started my journey to the world of crypto from crypto investing and buying tokens and meme tokens, but the fact that I develop things for a long time couldn't leave me indifferent to the tech side of crypto! This is where this project coming from - from this fun and easy perspective just as it was in crypto investing but in a more complicated, NFT-way with more serious approach. Here comes the MoonDoggie - the NFT asset that went through my mind and the beautiful-logic game that comes with it.
+
+![alt text](https://github.com/IgorMoscalets/MoonDoggies/blob/main/src/moondoggies-screenshots/moondoggies-1-home.png?raw=true)
+
 ## What it does
 It is a NFT game in which the most important part of the new approach I'm showing with this game is the NFT base creation by the user. It basically means that user can mint their starter NFT character from some base by his preference, and it's still going to be absolutely unique for every NFT created. Besides that, this NFT asset is directly related to our game, and it can be used as a character! With it's own properties, such as health, stamina, attack, and adorable...
 
@@ -22,11 +25,10 @@ Adorable parameter of our MoonDoggie is basically a chance to stun in every game
 
 This adorable parameter which is one of the most interesting and magical things about our game world requires randomness. Our game will be P2E (Play to Earn), and if we are controlling such assets as NFT that cost real money we should really put this randomness under a question mark. 
 
-![alt text](https://github.com/IgorMoscalets/MoonDoggies/blob/main/src/moondoggies-screenshots/moondoggies-1-home.png?raw=true)
-
-
-
 Here comes the Chainlink VRF (Verifiable Random Function), where we can get all our random stuff right inside our contracts with cryptological proof and security, which gives our game needed fairness and safety to choose players to win, even though we include such parameter as randomness in our game world. It just makes it more interesting but in no case easier to hack or more imbalanced. 
+
+
+![alt text](https://github.com/IgorMoscalets/MoonDoggies/blob/main/src/moondoggies-screenshots/moondoggies-6-balance.png?raw=true)
 
 Also we have our Marketplace, where users can sell and buy their NFTs (now they choose the price of them), they try them in game and then they know and decide, which NFTs are more rare, which are more valuable in terms of gameplay and so on. In this Marketplace we also want to use Chainlink Price Feeds, where we can get our fiat value for prices and user balance, to get more accurate and safe understanding of assets prices for user.
 ![alt text](https://github.com/IgorMoscalets/MoonDoggies/blob/main/src/moondoggies-screenshots/moondoggies-2-marketplace.png?raw=true)
